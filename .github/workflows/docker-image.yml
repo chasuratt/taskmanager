@@ -46,4 +46,4 @@ jobs:
           push: true                # Actually push the image to Docker Hub
           tags: |                   # Tag the image for identification
             ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:latest
-            ${{ secrets.DOCKER_HUB_TOKEN }}/taskmanager:${{ github.sha }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:${{ github.sha }}
