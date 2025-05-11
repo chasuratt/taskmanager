@@ -1,0 +1,16 @@
+docker run --name taskmanager-postgres \
+  -e POSTGRES_DB=taskmanager \
+  -e POSTGRES_USER=user \
+  -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 \
+  -v postgres-data:/var/lib/postgresql/data \
+  -d postgres:16
+
+# access container
+docker exec -it {CONTAINER_NAME / ID} {BASH_COMMAND}
+
+# compose container
+docker-compose up --build
+
+# fetch log
+docker logs -f {CONTAINER_NAME / ID}
