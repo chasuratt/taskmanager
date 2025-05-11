@@ -45,5 +45,5 @@ jobs:
           context: .                # Use the root directory as the build context
           push: true                # Actually push the image to Docker Hub
           tags: |                   # Tag the image for identification
-            ${{ secrets.DOCKER_HUB_USERNAME }}/task-manager:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:latest
             ${{ secrets.DOCKER_HUB_TOKEN }}/taskmanager:${{ github.sha }}
