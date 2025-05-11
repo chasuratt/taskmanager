@@ -1,4 +1,4 @@
-# .github/workflows/docker-ci-cd.yml
+# .github/workflows/docker-image.yml
 
 # Name of the workflow - this will appear in your GitHub Actions tab
 name: Docker CI/CD Pipeline
