@@ -28,7 +28,7 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'  # Eclipse Temurin distribution (formerly AdoptOpenJDK)
-          cache: maven             # Caches Maven dependencies to speed up builds
+#          cache: maven             # Caches Maven dependencies to speed up builds
 
       # Step 3: Log in to Docker Hub to allow pushing images
       - name: Login to Docker Hub
