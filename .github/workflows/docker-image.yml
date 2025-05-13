@@ -45,8 +45,8 @@ jobs:
           context: .                # Use the root directory as the build context
           push: true                # Actually push the image to Docker Hub
           tags: |                   # Tag the image for identification
-            ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:latest
-            ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:${{ github.sha }}
+            ${{ secrets.DOCKER_HUB_USERNAME }}/software-life-cycle-backend:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/software-life-cycle-backend:${{ github.sha }}
 
       # step 5 deploy to azure
       - name: Login to Azure
@@ -59,8 +59,8 @@ jobs:
         with:
           resource-group: project-software-life-cycle
           dns-name-label: my-backend-api
-          image: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-api:${{ github.sha }}
-          name: backend-container
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/software-life-cycle-backend:${{ github.sha }}
+          name: software-life-cycle-backend-container
           location: 'southeastasia'
           ports: 8080
           environment-variables: |
