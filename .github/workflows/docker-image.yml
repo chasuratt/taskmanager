@@ -47,3 +47,24 @@ jobs:
           tags: |                   # Tag the image for identification
             ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:latest
             ${{ secrets.DOCKER_HUB_USERNAME }}/taskmanager:${{ github.sha }}
+
+      # step 5 deploy to azure
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Azure Container Instances
+        uses: azure/aci-deploy@v1
+        with:
+          resource-group: project-software-life-cycle
+          dns-name-label: my-backend-api
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/backend-api:${{ github.sha }}
+          name: backend-container
+          location: 'southeastasia'
+          ports: 8080
+          environment-variables: |
+            SPRING_PROFILES_ACTIVE=dev
+          # Add any secret environment variables if needed:
+          # secure-environment-variables: |
+          #   DATABASE_URL=${{ secrets.DATABASE_URL }}
